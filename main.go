@@ -14,7 +14,7 @@ var (
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
 	hostname, _ := os.Hostname()
-	response := fmt.Sprintf("APP: %s Hostname: %s Version: %s\n", AppName, hostname, Version)
+	response := fmt.Sprintf("%s | %s | %s\n", AppName, hostname, Version)
 	w.Write([]byte(response))
 }
 
