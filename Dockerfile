@@ -7,7 +7,7 @@ RUN sed -i 's/\(.*\/\/\).*\(\/alpine.*\)/\1mirrors.aliyun.com\2/' /etc/apk/repos
 
 ARG ARCH="arm64"
 ARG OS="darwin"
-COPY ./build/${OS}-${ARCH}/demoapp ./
+COPY ./build/${OS}-${ARCH}/demoapp /bin/
 COPY ./config.yaml ./
-CMD [ "./demoapp" ]
+CMD [ "demoapp" ]
 EXPOSE 80
