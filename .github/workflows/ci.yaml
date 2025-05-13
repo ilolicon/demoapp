@@ -3,19 +3,31 @@ run-name: ${{ github.event_name }}-${{ github.actor }}
 on:
   push:
     tags:
-       - v* 
+      - v*
 jobs:
-  build:
+  deploy_prod:
+    name: Deploy to production
+    if: endsWith(github.ref, '-prod')
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch tag
+      - name: DEPLOY PRODUCTION
         run: |
-          echo "当前触发Tag：${{ github.ref }}"
-          if [[ "${{ github.ref }}" == "refs/tags/v1.0.0-prod" ]]; then
-            echo "部署到环境: production"
-          elif [[ "${{ github.ref }}" == "refs/tags/v1.0.0-test" ]]; then
-            echo "部署到环境: test"
-          fi
+          echo "Deploying ${{ github.ref }} to production"
+          echo "Current version: $(cat ./VERSION)"
+
+  deploy_test:
+    name: Deploy to test
+    if: endsWith(github.ref, '-test')
+    runs-on: ubuntu-latest
+    steps:
+      - name: DEPLOY TEST
+        run: |
+          echo "Deploying ${{ github.ref }} to production"
+          echo "Current version: $(cat ./VERSION)"
+
+  printenv:
+    runs-on: ubuntu-latest
+    steps:
       - name: Echo environment variables
         run: |
           echo "GITHUB_WORKFLOW=${{ github.workflow }}"
