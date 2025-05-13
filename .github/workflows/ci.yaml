@@ -2,8 +2,6 @@ name: Github Actions Demo
 run-name: ${{ github.event_name }}-${{ github.actor }}
 on:
   push:
-    branches:
-      - main
     tags:
        - v* 
 jobs:
