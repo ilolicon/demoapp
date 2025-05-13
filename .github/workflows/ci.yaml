@@ -17,6 +17,18 @@ jobs:
         run: |
           echo "Deploying ${{ github.ref }} to production"
           echo "Current version: $(cat ./VERSION)"
+        
+      - name: Echo environment variables
+        run: |
+          echo "GITHUB_WORKFLOW=${{ github.workflow }}"
+          echo "GITHUB_RUN_ID=${{ github.run_id }}"
+          echo "GITHUB_RUN_NUMBER=${{ github.run_number }}"
+          echo "GITHUB_ACTION=${{ github.action }}"
+          echo "GITHUB_ACTOR=${{ github.actor }}"
+          echo "GITHUB_REPOSITORY=${{ github.repository }}"
+          echo "GITHUB_EVENT_NAME=${{ github.event_name }}"
+          echo "GITHUB_SHA=${{ github.sha }}"
+          echo "GITHUB_REF=${{ github.ref }}"
 
   deploy_test:
     name: Deploy to test
@@ -31,9 +43,6 @@ jobs:
           echo "Deploying ${{ github.ref }} to production"
           echo "Current version: $(cat ./VERSION)"
 
-  printenv:
-    runs-on: ubuntu-latest
-    steps:
       - name: Echo environment variables
         run: |
           echo "GITHUB_WORKFLOW=${{ github.workflow }}"
