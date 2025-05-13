@@ -10,11 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: List files in respository
+      - name: Dispatch tag
         run: |
-          ls -al ${{ github.workspace }}
+          echo "当前触发Tag：${{ github.ref }}"
+          if [[ "${{ github.ref }}" == "refs/tags/v1.0.0-prod" ]]; then
+            echo "部署到环境: production"
+          elif [[ "${{ github.ref }}" == "refs/tags/v1.0.0-test" ]]; then
+            echo "部署到环境: test"
+          fi
       - name: Echo environment variables
         run: |
           echo "GITHUB_WORKFLOW=${{ github.workflow }}"
