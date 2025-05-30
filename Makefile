@@ -10,6 +10,9 @@ pkgs         = ./...
 
 APP_NAME        ?= demoapp
 BUILD_VERSION   ?= $(shell cat VERSION)
+BUILD_DATE      ?= $(shell date +"%Y%m%d-%T")
+BUILD_BRANCH    ?= $(shell git rev-parse --abbrev-ref HEAD)
+BUILD_REVERSION ?= $(shell git rev-parse HEAD)
 
 all: style vet test build docker
 
@@ -37,8 +40,11 @@ vet:
 build:
 	@echo ">> building code" 
 	CGO_ENABLED=0 GO111MODULE=$(GO111MODULE) $(GO) build -ldflags="-s -w \
-	-X main.AppName=$(APP_NAME) \
-	-X main.Version=$(BUILD_VERSION)" \
+	-X github.com/prometheus/common/version.Version=$(BUILD_VERSION) \
+	-X github.com/prometheus/common/version.BuildDate=$(BUILD_DATE) \
+	-X github.com/prometheus/common/version.Branch=$(BUILD_BRANCH) \
+	-X github.com/prometheus/common/version.Revision=$(BUILD_REVERSION) \
+	-X github.com/prometheus/common/version.BuildUser=ilolicon" \
 	-o ./build/$(GOOS)-$(GOARCH)/$(APP_NAME) ./main.go
 
 .PHONY: docker

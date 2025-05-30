@@ -9,5 +9,5 @@ ARG ARCH="arm64"
 ARG OS="darwin"
 COPY ./build/${OS}-${ARCH}/demoapp /bin/
 COPY ./config.yaml ./
-CMD [ "demoapp" ]
+ENTRYPOINT [ "/bin/demoapp" ]
 EXPOSE 80

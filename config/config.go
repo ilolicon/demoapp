@@ -7,7 +7,7 @@ import (
 )
 
 type Config struct {
-	LogLevel string `yaml:"log_level"`
+	DateFormat string `yaml:"date_format"`
 
 	original string
 }

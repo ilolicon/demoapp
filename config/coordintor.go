@@ -22,7 +22,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-// Coordinator coordinates Alertmanager configurations beyond the lifetime of a
+// Coordinator coordinates demoapp configurations beyond the lifetime of a
 // single configuration.
 type Coordinator struct {
 	configFilePath string
@@ -54,15 +54,15 @@ func NewCoordinator(configFilePath string, r prometheus.Registerer, l *slog.Logg
 
 func (c *Coordinator) registerMetrics(r prometheus.Registerer) {
 	configHash := prometheus.NewGauge(prometheus.GaugeOpts{
-		Name: "alertmanager_config_hash",
-		Help: "Hash of the currently loaded alertmanager configuration. Note that this is not a cryptographically strong hash.",
+		Name: "demoapp_config_hash",
+		Help: "Hash of the currently loaded demoapp configuration. Note that this is not a cryptographically strong hash.",
 	})
 	configSuccess := prometheus.NewGauge(prometheus.GaugeOpts{
-		Name: "alertmanager_config_last_reload_successful",
+		Name: "demoapp_config_last_reload_successful",
 		Help: "Whether the last configuration reload attempt was successful.",
 	})
 	configSuccessTime := prometheus.NewGauge(prometheus.GaugeOpts{
-		Name: "alertmanager_config_last_reload_success_timestamp_seconds",
+		Name: "demoapp_config_last_reload_success_timestamp_seconds",
 		Help: "Timestamp of the last successful configuration reload.",
 	})
 
