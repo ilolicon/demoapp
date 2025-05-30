@@ -45,7 +45,7 @@ build:
 	-X github.com/prometheus/common/version.Branch=$(BUILD_BRANCH) \
 	-X github.com/prometheus/common/version.Revision=$(BUILD_REVERSION) \
 	-X github.com/prometheus/common/version.BuildUser=ilolicon" \
-	-o ./build/$(GOOS)-$(GOARCH)/$(APP_NAME) ./main.go
+	-o ./build/$(GOOS)-$(GOARCH)/$(APP_NAME) ./cmd/$(APP_NAME)/main.go
 
 .PHONY: docker
 docker:
