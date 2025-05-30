@@ -1,56 +1,38 @@
-name: Github Actions Demo
+name: Demoapp CI
 run-name: ${{ github.event_name }}-${{ github.actor }}
 on:
   push:
+    branches:
+      - main
+      - master
     tags:
       - v*
+
 jobs:
-  deploy_prod:
-    name: Deploy to production
-    if: endsWith(github.ref, '-prod')
+  build-and-push:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: DEPLOY PRODUCTION
-        run: |
-          echo "Deploying ${{ github.ref }} to production"
-          echo "Current version: $(cat ./VERSION)"
-        
-      - name: Echo environment variables
-        run: |
-          echo "GITHUB_WORKFLOW=${{ github.workflow }}"
-          echo "GITHUB_RUN_ID=${{ github.run_id }}"
-          echo "GITHUB_RUN_NUMBER=${{ github.run_number }}"
-          echo "GITHUB_ACTION=${{ github.action }}"
-          echo "GITHUB_ACTOR=${{ github.actor }}"
-          echo "GITHUB_REPOSITORY=${{ github.repository }}"
-          echo "GITHUB_EVENT_NAME=${{ github.event_name }}"
-          echo "GITHUB_SHA=${{ github.sha }}"
-          echo "GITHUB_REF=${{ github.ref }}"
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.x'
 
-  deploy_test:
-    name: Deploy to test
-    if: endsWith(github.ref, '-test')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: DEPLOY TEST
+      - name: Build and Push
         run: |
-          echo "Deploying ${{ github.ref }} to production"
-          echo "Current version: $(cat ./VERSION)"
+          make build docker
 
-      - name: Echo environment variables
+      - name: Echo build information
         run: |
-          echo "GITHUB_WORKFLOW=${{ github.workflow }}"
-          echo "GITHUB_RUN_ID=${{ github.run_id }}"
-          echo "GITHUB_RUN_NUMBER=${{ github.run_number }}"
-          echo "GITHUB_ACTION=${{ github.action }}"
-          echo "GITHUB_ACTOR=${{ github.actor }}"
-          echo "GITHUB_REPOSITORY=${{ github.repository }}"
-          echo "GITHUB_EVENT_NAME=${{ github.event_name }}"
+          echo "Built and pushed version: $(cat ./VERSION)"
           echo "GITHUB_SHA=${{ github.sha }}"
           echo "GITHUB_REF=${{ github.ref }}"
