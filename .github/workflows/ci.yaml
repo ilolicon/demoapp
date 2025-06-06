@@ -1,5 +1,4 @@
-name: 🚀 CI
-run-name: ${{ github.event_name }}-${{ github.actor }}
+name: 🚀 APP CI
 on:
   push:
     branches:
