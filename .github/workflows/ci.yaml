@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-push:
-    name: Build and Push Docker Image
+    name: Build And Push Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,13 +21,13 @@ jobs:
         with:
           go-version: '1.x'
 
-      - name: Login to Docker Hub
+      - name: Login Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and Push
+      - name: Build And Push
         run: |
           make build docker
 
