@@ -18,7 +18,8 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-            echo "TEST"
+          echo "TEST"
+          echo ${DOCKERHUB_USERNAME}
 
       - name: Sync Images
         uses: hhyasdf/image-sync-action@v1.1
