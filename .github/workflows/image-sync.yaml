@@ -1,0 +1,25 @@
+name: image-sync
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 10 * * 1'
+
+jobs:
+  image-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: sync images
+        uses: hhyasdf/image-sync-action@v1.1
+        with:
+          auth_file: ./image-sync/auth.yaml
+          images_file: ./image-sync/images.yaml
+          version: latest
+          proc: 6
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
