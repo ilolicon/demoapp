@@ -260,6 +260,7 @@ func (h *Handler) ApplyConfig(conf *config.Config) error {
 	return nil
 }
 
+// https://github.com/prometheus/prometheus/issues/9105
 // Listeners creates the TCP listeners for web requests.
 func (h *Handler) Listeners() ([]net.Listener, error) {
 	var listeners []net.Listener
@@ -413,7 +414,7 @@ func (h *Handler) quit(w http.ResponseWriter, _ *http.Request) {
 	h.quitOnce.Do(func() {
 		closed = true
 		close(h.quitCh)
-		fmt.Fprintf(w, "Requesting termination... Goodbye!")
+		fmt.Fprintf(w, "Requesting termination...")
 	})
 	if !closed {
 		fmt.Fprintf(w, "Termination already in progress.")
