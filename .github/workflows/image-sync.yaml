@@ -1,4 +1,4 @@
-name: image-sync
+name: Image Sync
 on:
   push:
     branches:
