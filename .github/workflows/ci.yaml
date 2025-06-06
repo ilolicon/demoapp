@@ -1,4 +1,4 @@
-name: Demoapp CI
+name: 🚀 CI
 run-name: ${{ github.event_name }}-${{ github.actor }}
 on:
   push:

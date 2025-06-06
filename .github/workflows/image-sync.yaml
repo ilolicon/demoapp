@@ -1,4 +1,4 @@
-name: Image Sync
+name: 🚀 Kubernetes Images Sync
 on:
   push:
     branches:
@@ -12,14 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: ENV DEBUG
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-        run: |
-          echo "TEST"
-          echo ${DOCKERHUB_USERNAME}
 
       - name: Sync Images
         uses: hhyasdf/image-sync-action@v1.1
