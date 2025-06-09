@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp
+spec:
+  template:
+    spec:
+      volumes:
+      - name: config
+        configMap:
+          name: demoapp
+      containers:
+      - name: demoapp
+        image: ilolicon/demoapp
+        args:
+        - --web.listen-address=:80
+        - --config.file=/etc/demoapp/config.yaml
+        volumeMounts:
+        - name: config
+          mountPath: /etc/demoapp
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 200Mi
+        ports:
+        - name: http
+          containerPort: 80
