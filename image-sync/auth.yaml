@@ -1,3 +1,7 @@
 docker.io:
   username: ${DOCKERHUB_USERNAME}
   password: ${DOCKERHUB_TOKEN}
+
+registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer:
+  username: ${ACR_USERNAME}
+  password: ${ACR_PASSWORD}
