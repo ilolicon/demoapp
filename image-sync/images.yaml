@@ -3,3 +3,6 @@ registry.k8s.io/prometheus-adapter/prometheus-adapter:v0.12.0: docker.io/ilolico
 registry.k8s.io/metrics-server/metrics-server:v0.7.2: docker.io/ilolicon/metrics-server
 registry.k8s.io/dns/k8s-dns-node-cache:1.26.4: docker.io/ilolicon/k8s-dns-node-cache
 ghcr.io/tektoncd/pipeline/webhook-d4749e605405422fd87700164e31b2d1:v1.1.0: docker.io/ilolicon/tekton-webhook
+ghcr.io/tektoncd/pipeline/resolvers-ff86b24f130c42b88983d3c13993056d:v1.1.0: docker.io/ilolicon/tekton-resolvers
+ghcr.io/tektoncd/pipeline/events-a9042f7efb0cbade2a868a1ee5ddd52c:v1.1.0: docker.io/ilolicon/tekton-events
+ghcr.io/tektoncd/pipeline/controller-10a3e32792f33651396d02b6855a6e36:v1.1.0: docker.io/ilolicon/tekton-controller
