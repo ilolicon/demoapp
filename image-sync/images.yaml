@@ -28,3 +28,12 @@ ghcr.io/tektoncd/pipeline/entrypoint-bff0a22da108bc2f16c818c97641a296:v1.1.0:
 ghcr.io/tektoncd/pipeline/nop-8eac7c133edad5df719dc37b36b62482:v1.1.0:
 - docker.io/ilolicon/tekton-nop
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-nop
+ghcr.io/tektoncd/pipeline/sidecarlogresults-7501c6a20d741631510a448b48ab098f:v1.1.0:
+- docker.io/ilolicon/tekton-sidecarlogresults
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-sidecarlogresults
+ghcr.io/tektoncd/pipeline/workingdirinit-0c558922ec6a1b739e550e349f2d5fc1:v1.1.0:
+- docker.io/ilolicon/tekton-workingdirinit
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-workingdirinit
+cgr.dev/chainguard/busybox:
+- docker.io/ilolicon/busybox
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/busybox
