@@ -25,3 +25,6 @@ ghcr.io/tektoncd/pipeline/controller-10a3e32792f33651396d02b6855a6e36:v1.1.0:
 ghcr.io/tektoncd/pipeline/entrypoint-bff0a22da108bc2f16c818c97641a296:v1.1.0:
 - docker.io/ilolicon/tekton-entrypoint
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-entrypoint
+ghcr.io/tektoncd/pipeline/nop-8eac7c133edad5df719dc37b36b62482:v1.1.0:
+- docker.io/ilolicon/tekton-nop
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-nop
