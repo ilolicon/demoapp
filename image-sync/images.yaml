@@ -45,4 +45,7 @@ ghcr.io/tektoncd/triggers/webhook-dd1edc925ee1772a9f76e2c1bc291ef6:v0.32.0:
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-triggers-webhook
 ghcr.io/tektoncd/triggers/interceptors-3176d6a3f314c3655b30bfd36e421dd5:v0.32.0:
 - docker.io/ilolicon/tekton-triggers-interceptors
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-triggers-interceptors
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-triggers-interceptorsQ
+gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2:
+- docker.io/ilolicon/tekton-git-init
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-git-init
