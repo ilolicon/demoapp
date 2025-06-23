@@ -34,6 +34,6 @@ ghcr.io/tektoncd/pipeline/sidecarlogresults-7501c6a20d741631510a448b48ab098f:v1.
 ghcr.io/tektoncd/pipeline/workingdirinit-0c558922ec6a1b739e550e349f2d5fc1:v1.1.0:
 - docker.io/ilolicon/tekton-workingdirinit
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-workingdirinit
-cgr.dev/chainguard/busybox:
+cgr.dev/chainguard/busybox:latest:
 - docker.io/ilolicon/busybox
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/busybox
