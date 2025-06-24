@@ -14,7 +14,7 @@ BUILD_DATE      ?= $(shell date +"%Y%m%d-%T")
 BUILD_BRANCH    ?= $(shell git rev-parse --abbrev-ref HEAD)
 BUILD_REVERSION ?= $(shell git rev-parse HEAD)
 
-all: style vet test build docker
+all: style vet test build
 
 .PHONY: style
 style:

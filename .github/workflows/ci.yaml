@@ -27,7 +27,7 @@ jobs:
 
       - name: Build And Push
         run: |
-          make build docker
+          make all && make docker
 
       - name: Echo build information
         run: |
