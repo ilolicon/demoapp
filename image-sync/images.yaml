@@ -54,3 +54,6 @@ gcr.io/kaniko-project/executor:v1.5.1:
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/kaniko-executor
 docker.io/golang:1.22.12-alpine3.21:
 - registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/golang
+ghcr.io/tektoncd/dashboard/dashboard-9623576a202fe86c8b7d1bc489905f86:v0.55.0:
+- docker.io/ilolicon/tekton-dashboard
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-dashboard
