@@ -1,5 +1,4 @@
-ARG BASE_IMAGE="alpine:latest"
-FROM ${BASE_IMAGE}
+FROM registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine:latest
 LABEL maintainer="ilolicon <97431110@qq.com>"
 
 RUN sed -i 's/\(.*\/\/\).*\(\/alpine.*\)/\1mirrors.aliyun.com\2/' /etc/apk/repositories && \
