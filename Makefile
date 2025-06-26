@@ -1,5 +1,3 @@
-SHELL := /bin/bash # Use bash syntax
-
 GO          ?= go
 GOFMT       ?= $(GO)fmt
 GOOS        ?= $(shell $(GO) env GOOS)
@@ -20,7 +18,7 @@ all: style vet test build
 style:
 	@echo ">> checking code style"
 	@fmtRes=$$($(GOFMT) -d $$(find . -path ./vendor -prune -o -name '*.go' -print)); \
-	if [[ -n "$${fmtRes}" ]]; then \
+	if [ -n "$${fmtRes}" ]; then \
 		echo "gofmt checking failed!"; echo "$${fmtRes}"; echo; \
 		echo "Please ensure you are using $$($(GO) version) for formatting code."; \
 		exit 1; \
