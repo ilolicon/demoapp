@@ -51,4 +51,6 @@ build:
 docker:
 	@echo ">> building code"
 	@docker build --build-arg ARCH=$(GOARCH) --build-arg OS=$(GOOS) -t ilolicon/$(APP_NAME):$(BUILD_VERSION) .
+	@docker tag ilolicon/$(APP_NAME):$(BUILD_VERSION) registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/$(APP_NAME):$(BUILD_VERSION)
+	@docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/$(APP_NAME):$(BUILD_VERSION)
 	@docker push ilolicon/$(APP_NAME):$(BUILD_VERSION)
