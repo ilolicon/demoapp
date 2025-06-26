@@ -27,7 +27,7 @@ style:
 .PHONT: test
 test:
 	@echo ">> running all tests"
-	GO111MODULE=$(GO111MODULE) $(GO) test -race -cover $(pkgs)
+	CGO_ENABLED=1 GO111MODULE=$(GO111MODULE) $(GO) test -race -cover $(pkgs)
 
 .PHONY: vet
 vet:
