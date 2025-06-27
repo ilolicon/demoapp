@@ -1,3 +1,2 @@
-registry.k8s.io/sig-storage/nfs-subdir-external-provisioner:v4.0.2:
-- docker.io/ilolicon/nfs-subdir-external-provisioner
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/nfs-subdir-external-provisioner
+docker.io/golang:1.23.10:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/golang:1.23.10
