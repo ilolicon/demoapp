@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/golang:1.23.10-alpine3.22 AS builder
 ENV GOPROXY=https://goproxy.cn,direct
-RUN sed -i 's/\(.*\/\/\).*\(\/alpine.*\)/\1mirrors.aliyun.com\2/' /etc/apk/repositories \
+RUN sed -i 's/\(.*\/\/\).*\(\/alpine.*\)/\1mirrors.aliyun.com\2/' /etc/apk/repositories && \
     apk update && \
     apk add --no-cache ca-certificates tzdata
 COPY ./go.mod ./
@@ -12,7 +12,6 @@ RUN CGO_ENABLED=0 make all
 FROM registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine AS runner
 COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-
 ARG OS="linux"
 ARG ARCH="amd64"
 COPY ./build/${OS}-${ARCH}/demoapp /bin/
