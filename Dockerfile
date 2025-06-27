@@ -8,7 +8,7 @@ COPY ./go.mod ./
 COPY ./go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 make all
+RUN CGO_ENABLED=0 make build
 
 FROM registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine AS runner
 COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
