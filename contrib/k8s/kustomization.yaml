@@ -12,7 +12,7 @@ replicas:
   name: demoapp
 
 images:
-- name: ilolicon/demoapp
+- name: registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/demoapp
   newTag: v1.0.0
 
 configMapGenerator:
@@ -24,3 +24,6 @@ labels:
 - includeSelectors: true
   pairs:
     app: demoapp
+
+patches:
+- path: image-pull-secret-patch.yaml
