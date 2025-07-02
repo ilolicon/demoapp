@@ -12,6 +12,7 @@ RUN CGO_ENABLED=0 make build
 
 FROM registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine AS runner
 COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+COPY --from=builder /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/Asia/Shanghai
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 ARG OS="linux"
 ARG ARCH="amd64"
