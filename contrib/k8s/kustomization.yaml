@@ -12,7 +12,8 @@ replicas:
   name: demoapp
 
 images:
-- name: registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/demoapp
+- name: ilolicon/demoapp
+  newName: registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/demoapp
   newTag: v1.0.0
 
 configMapGenerator:
