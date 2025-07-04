@@ -1,2 +1,2 @@
-docker.io/golang:1.23.10:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/golang:1.23.10
+docker.io/alpine/git:latest:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine-git:latest
