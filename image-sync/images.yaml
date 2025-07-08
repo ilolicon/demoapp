@@ -1,2 +1,2 @@
-docker.io/alpine/git:latest:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine-git:latest
+docker.io/alpine/helm:3:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine-helm:3
