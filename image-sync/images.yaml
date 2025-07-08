@@ -1,2 +1,2 @@
-docker.io/alpine/helm:3:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/alpine-helm:3
+ghcr.io/dexidp/dex:v2.41.1:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/dex:v2.41.1
