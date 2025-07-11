@@ -1,2 +1,2 @@
-ghcr.io/dexidp/dex:v2.41.1:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/dex:v2.41.1
+docker.io/bitnami/kubectl:1.31.4:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/kubectl:1.31.4
