@@ -1,6 +1,2 @@
-docker.io/calico/cni:v3.30.2:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/calico-cni:v3.30.2
-docker.io/calico/node:v3.30.2:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/calico-node:v3.30.2
-docker.io/calico/kube-controllers:v3.30.2:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/calico-kube-controllers:v3.30.2
+ghcr.io/tektoncd/triggers/eventlistenersink-7ad1faa98cddbcb0c24990303b220bb8:v0.32.0@sha256:a8ca55521de081a0fbc2234e2d8151ad4fd47b09031786bd2743e23b28e7833a:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/eventlistenersink:v0.32.0
