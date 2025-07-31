@@ -1,2 +1,2 @@
-docker.io/mikefarah/yq:4.47.1:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/yq:4.47.1
+registry.k8s.io/ingress-nginx/controller:v1.13.0:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/ingress-nginx-controller:v1.13.0
