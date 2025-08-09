@@ -1,2 +1,2 @@
-registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.0:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/kube-webhook-certgen:v1.6.0
+argoproj/rollouts-demo:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/rollouts-demo
