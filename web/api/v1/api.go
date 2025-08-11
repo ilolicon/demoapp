@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/ilolicon/demoapp/config"
@@ -73,8 +74,40 @@ type Response struct {
 
 type apiFuncResult struct {
 	data      interface{}
+	code      int
 	err       *apiError
 	finalizer func()
+}
+
+type resultOption func(*apiFuncResult)
+
+func WithCode(code int) resultOption {
+	return func(afr *apiFuncResult) {
+		afr.code = code
+	}
+}
+
+func WithErr(err *apiError) resultOption {
+	return func(afr *apiFuncResult) {
+		afr.err = err
+	}
+}
+
+func WithFinalizer(finalizer func()) resultOption {
+	return func(afr *apiFuncResult) {
+		afr.finalizer = finalizer
+	}
+}
+
+func newAPIFuncResult(data interface{}, opts ...resultOption) *apiFuncResult {
+	afr := &apiFuncResult{
+		data: data,
+		code: http.StatusOK,
+	}
+	for _, opt := range opts {
+		opt(afr)
+	}
+	return afr
 }
 
 type apiFunc func(r *http.Request) apiFuncResult
@@ -122,9 +155,8 @@ func (api *API) Register(r *route.Router) {
 				api.respondError(w, result.err, result.data)
 				return
 			}
-
 			if result.data != nil {
-				api.respond(w, r, result.data)
+				api.respond(w, r, result.data, result.code)
 				return
 			}
 			w.WriteHeader(http.StatusNoContent)
@@ -137,10 +169,10 @@ func (api *API) Register(r *route.Router) {
 	r.Get("/status/buildinfo", wrap(api.serveBuildInfo))
 	r.Get("/status/flags", wrap(api.serveFlags))
 	r.Get("/status/date", wrap(api.serveDate))
-
+	r.Get("/status/code/:code", wrap(api.serveStatusCode))
 }
 
-func (api *API) respond(w http.ResponseWriter, req *http.Request, data interface{}) {
+func (api *API) respond(w http.ResponseWriter, req *http.Request, data interface{}, code int) {
 	statusMessage := statusSuccess
 
 	resp := &Response{
@@ -155,7 +187,7 @@ func (api *API) respond(w http.ResponseWriter, req *http.Request, data interface
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(code)
 	if n, err := w.Write(b); err != nil {
 		api.logger.Error("error writing response", "url", req.URL, "bytesWritten", n, "err", err)
 	}
@@ -208,27 +240,27 @@ type demoappConfig struct {
 func (api *API) serveRuntimeInfo(_ *http.Request) apiFuncResult {
 	status, err := api.runtimeInfo()
 	if err != nil {
-		return apiFuncResult{status, &apiError{errorInternal, err}, nil}
+		return *newAPIFuncResult(status, WithErr(&apiError{errorInternal, err}))
 	}
-	return apiFuncResult{status, nil, nil}
+	return *newAPIFuncResult(status)
 }
 
 func (api *API) serveBuildInfo(_ *http.Request) apiFuncResult {
-	return apiFuncResult{api.buildInfo, nil, nil}
+	return *newAPIFuncResult(api.buildInfo)
 }
 
 func (api *API) serveConfig(_ *http.Request) apiFuncResult {
 	cfg := &demoappConfig{
 		YAML: api.config().String(),
 	}
-	return apiFuncResult{cfg, nil, nil}
+	return *newAPIFuncResult(cfg)
 }
 
 func (api *API) serveFlags(_ *http.Request) apiFuncResult {
-	return apiFuncResult{api.flagsMap, nil, nil}
+	return *newAPIFuncResult(api.flagsMap)
 }
 
-func (api *API) serveDate(r *http.Request) apiFuncResult {
+func (api *API) serveDate(_ *http.Request) apiFuncResult {
 	var data string
 
 	cfg := api.config()
@@ -246,5 +278,14 @@ func (api *API) serveDate(r *http.Request) apiFuncResult {
 	default:
 		data = time.Now().Format(time.DateTime)
 	}
-	return apiFuncResult{data, nil, nil}
+	return *newAPIFuncResult(data)
+}
+
+func (api *API) serveStatusCode(r *http.Request) apiFuncResult {
+	code := route.Param(r.Context(), "code")
+	i, err := strconv.Atoi(code)
+	if err != nil {
+		return *newAPIFuncResult(code, WithErr(&apiError{err: err}))
+	}
+	return *newAPIFuncResult(code, WithCode(i))
 }
