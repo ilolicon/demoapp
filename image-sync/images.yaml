@@ -1,2 +1,2 @@
 ghcr.io/tektoncd/dashboard/dashboard-9623576a202fe86c8b7d1bc489905f86:v0.64.0@sha256:6df92b1ba4fe8b1f979f35e53473ed35da94ee6d0d351736aa5070ba765cdd49:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tektoncd-dashboard:v0.64.0
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tekton-dashboard:v0.64.0
