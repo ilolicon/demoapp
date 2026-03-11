@@ -1,2 +1,2 @@
-ghcr.io/dexidp/dex:v2.45.0:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/dexidp-dex:v2.45.0
+ghcr.io/tektoncd/operator/operator-303303c315a48490ba6517859ef65b77:v0.79.0@sha256:bc90657a93a35b4046ef4fbfc236ecd38c0ea46feea20a44a69f44110731de01:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tektoncd-operator:v0.79.0
