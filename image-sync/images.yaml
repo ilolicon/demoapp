@@ -1,2 +1,2 @@
-ghcr.io/tektoncd/operator/operator-303303c315a48490ba6517859ef65b77:v0.79.0@sha256:bc90657a93a35b4046ef4fbfc236ecd38c0ea46feea20a44a69f44110731de01:
-- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tektoncd-operator:v0.79.0
+ghcr.io/tektoncd/operator/webhook-f2bb711aa8f0c0892856a4cbf6d9ddd8:v0.79.0@sha256:1096920eeb1ad279f4f7e69cec6bf96d8b48a4f038b02f36f7b54ce073e6b0a5:
+- registry.cn-hangzhou.aliyuncs.com/kubernetes-syncer/tektoncd-operator-webhook:v0.79.0
